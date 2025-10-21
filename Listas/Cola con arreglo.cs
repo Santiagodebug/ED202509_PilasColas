@@ -6,46 +6,36 @@ using System.Threading.Tasks;
 
 namespace Listas
 {
-    internal class Pila
+    internal class Cola
     {
         private List<string> _lista;
-        public Pila()
+        public Cola()
         {
             _lista = new List<string>();
         }
-        // Agrega un nuevo elemento al tope de la pila
+        // Agrega un nuevo elemento al final de la cola
         public void Agregar(string dato)
         {
             _lista.Add(dato);
         }
-        // Elimina el elemento del tope de la pila
+        // Elimina el elemento del frente de la cola
         public void Eliminar()
         {
             if (_lista.Count == 0) 
             {
-                throw new Exception("No hay elementos");
+                throw new Exception("Cola vacia");
             }
-            _lista.RemoveAt(_lista.Count - 1);
-        }
-        // Imprimir todos los elementos desde el fondo hasta arriba
+            _lista.RemoveAt(0);
+    }
+        // Imprimir todos los elementos desde el frente hasta el final
         public string Imprimir()
         {
             string datos = string.Empty;
-            
             foreach (var item in _lista)
             {
                 datos += item + Environment.NewLine;
             }
             return datos;
-        }
-        //ver el elemento del tope sin eliminarlo(enteramente opcional)
-                public string VerTope()
-        {
-            if (_lista.Count == 0) 
-            {
-                throw new Exception("No hay elementos");
-            }
-            return _lista[_lista.Count - 1];
-        }
+        }   
     }
 }
